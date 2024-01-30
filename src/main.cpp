@@ -27,6 +27,11 @@ public:
         direction = {1.0f, 1.0f};
         speed = 5.0f;
     }
+
+    void reset() {
+        shape.setPosition(400, 300);
+        direction = {1.0f, 1.0f};
+    }
 };
 
 int main() {
@@ -69,10 +74,15 @@ int main() {
             ball.direction.x = -ball.direction.x;
 
         // Ball out of bounds
-        if (ball.shape.getPosition().x <= 0 || ball.shape.getPosition().x + ball.shape.getRadius() * 2 >= 800) {
-            ball.shape.setPosition(400, 300);
-            ball.direction = {1.0f, 1.0f};
+        if (ball.shape.getPosition().x <= 0) {
+            // Ball out of bounds on the left
+            // Handle left side logic here
             score++;
+            ball.reset();
+        } else if (ball.shape.getPosition().x + ball.shape.getRadius() * 2 >= 800) {
+            // Ball out of bounds on the right
+            // Handle right side logic here
+            ball.reset();
         }
 
         sf::Font font;
