@@ -137,6 +137,19 @@ public:
                 gameOverText.setPosition(250, 250);
                 window.draw(gameOverText);
             }
+            if (font.loadFromFile("OpenSans.ttf")) { // Change the font file path as needed
+                if(scoreLeft == 10) {
+                    sf::Text winnerText("Left Win!", font, 50);
+                    winnerText.setPosition(300, 300);
+                    window.draw(winnerText);
+                }
+                if (scoreRight == 10) {
+                    sf::Text winnerText2("Right Win!", font, 50);
+                    winnerText2.setPosition(300, 300);
+                    window.draw(winnerText2);
+                }
+
+            }
 
         }
 
